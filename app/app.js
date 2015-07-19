@@ -1,6 +1,6 @@
 var app = angular.module("app",[])
 
-.controller("ToDoController",function($scope){
+.controller("ToDoController",["$scope",function($scope){
 
 	$scope.todo = [];
 	$scope.percent = 0;
@@ -82,4 +82,4 @@ var app = angular.module("app",[])
 		$scope.percent = (counter / $scope.todo.length) * 100;  
 	}
 
-});
+}]);
