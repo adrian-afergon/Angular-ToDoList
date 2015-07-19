@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>My To Do List</title>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="public/css/style.css" />
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>	
+	<script type="text/javascript" src="app/app.js"></script>
+</head>
+<body ng-controller="ToDoController">
+	
+	<h1>ToDo List</h1>
+
+	<form ng-submit="addActv()">
+		<input type="text" value="" placeholder="Activity" ng-model="newActv.description" />
+		<input type="datetime-local" value="" placeholder="Date" ng-model="newActv.date" />
+		<button type="submit" class="btn btn-primary col-md-2"><i class="fa fa-plus"></i> Add</button>
+	</form>
+	
+	<nav>
+		<button ng-click="doneSelected()" value="Done" class="btn btn-success"><i class="fa fa-check"></i> Done</button>	
+		<button ng-click="undoneSelected()" value="Undone" class="btn btn-warning"><i class="fa fa-check"></i> Undone</button>
+		<button ng-click="selectAll()" value="Delete" class="btn btn-default"><i class="fa fa-th-list"></i> Select All</button>
+		<button ng-click="unselectAll()" value="Delete" class="btn btn-default"><i class="fa fa-th-list"></i> Unselect All</button>			
+		<button ng-click="deleteSelected()" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete Selected</button>
+		<button ng-click="delete()" value="Delete" class="btn btn-danger"><i class="fa fa-trash-o"></i> Clean</button>	
+	<nav>
+
+	<div class="list-group">
+		<span class="list-group-item" ng-class="{'active' : activity.selected}" ng-repeat="activity in todo | orderBy: ['-done','date']">
+			<p class="list-group-item-heading">	
+				<input type="checkbox" name="done" ng-model="activity.selected"/> 
+				<label ng-class="{'strike': activity.done}">{{activity.description}}</label>
+			</p>	
+			<p class="list-group-item-text">	 
+				<small ng-class="{'strike': activity.done}">{{activity.date | date:'short'}}</small>
+			</p>
+		</span>
+	</div>
+	<div class="progress" ng-class="{'invisible' : todo.length === 0}">
+		<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{percent}}%;"><span class="sr-only">10% Complete</span>{{percent}}%</div>
+	</div>
+</body>
+</html>

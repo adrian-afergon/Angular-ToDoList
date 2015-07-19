@@ -1,0 +1,29 @@
+{
+  "name": "Adrián",
+  "version": "0.0.0",
+  "authors": [
+    "Adrián Ferrera González <adrian.afergon@gmail.com>"
+  ],
+  "description": "Typical example of To-Do list",
+  "keywords": [
+    "ToDo",
+    "angular",
+    "tipical",
+    "example",
+    "lerning"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
+  }
+}
